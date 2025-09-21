@@ -2,52 +2,34 @@
 
 This is a full-stack, three-tier web application. It is a secure to-do list where users can register, log in, and manage their own private tasks. The project demonstrates the separation of concerns between a frontend user interface, a backend API for business logic, and a relational database for data persistence.
 
-
 ---
 
 ## Features
 
-* **User Authentication:** Secure user registration and login using JWT (JSON Web Tokens).
-    
-* **Private To-Do Lists:** Each user can only view and manage their own tasks.
-    
-* **Full CRUD Functionality:** Create, Read, Update (mark as complete), and Delete tasks.
-    
-* **RESTful API:** A well-structured backend API to handle all application logic.
-    
 
 ---
+![Login Screen](/assets/images/login.png)
+
+---
+![Home Screen](/assets/images/home.png)
 
 ## Tech Stack & Architecture
 
 This application uses a classic three-tier architecture:
 
-* **Presentation Tier (Frontend):**
-    
-    * [React.js](https://reactjs.org/)
-        
-    * [React Router](https://reactrouter.com/) for page navigation.
-        
-    * [Axios](https://axios-http.com/) for making API requests.
-        
-* **Application Tier (Backend):**
-    
-    * [Python 3](https://www.python.org/)
-        
-    * [Flask](https://flask.palletsprojects.com/) as the web framework.
-        
-    * [Flask-SQLAlchemy](https://flask-sqlalchemy.palletsprojects.com/) as the ORM.
-        
-    * [Flask-Bcrypt](https://flask-bcrypt.readthedocs.io/) for password hashing.
-        
-    * [PyJWT](https://pyjwt.readthedocs.io/) for generating and validating JSON Web Tokens.
-        
-* **Data Tier (Database):**
-    
-    * [PostgreSQL](https://www.postgresql.org/) for relational data storage.
-        
-    * [Psycopg2](https://www.psycopg.org/docs/) as the Python-PostgreSQL adapter.
-        
+- **Presentation Tier (Frontend):**
+  - [React.js](https://reactjs.org/)
+  - [React Router](https://reactrouter.com/) for page navigation.
+  - [Axios](https://axios-http.com/) for making API requests.
+- **Application Tier (Backend):**
+  - [Python 3](https://www.python.org/)
+  - [Flask](https://flask.palletsprojects.com/) as the web framework.
+  - [Flask-SQLAlchemy](https://flask-sqlalchemy.palletsprojects.com/) as the ORM.
+  - [Flask-Bcrypt](https://flask-bcrypt.readthedocs.io/) for password hashing.
+  - [PyJWT](https://pyjwt.readthedocs.io/) for generating and validating JSON Web Tokens.
+- **Data Tier (Database):**
+  - [PostgreSQL](https://www.postgresql.org/) for relational data storage.
+  - [Psycopg2](https://www.psycopg.org/docs/) as the Python-PostgreSQL adapter.
 
 ```plaintext
 +------------------+          +-----------------------+          +-----------------------+
@@ -66,14 +48,10 @@ Follow these steps carefully to get the application running on your local machin
 
 Make sure you have the following software installed on your system:
 
-* [Git](https://git-scm.com/)
-    
-* [Node.js and npm](https://nodejs.org/en/download/) (v16 or higher)
-    
-* [Python 3 and Pip](https://www.python.org/downloads/) (v3.8 or higher)
-    
-* [PostgreSQL Server](https://www.postgresql.org/download/)
-    
+- [Git](https://git-scm.com/)
+- [Node.js and npm](https://nodejs.org/en/download/) (v16 or higher)
+- [Python 3 and Pip](https://www.python.org/downloads/) (v3.8 or higher)
+- [PostgreSQL Server](https://www.postgresql.org/download/)
 
 ### 1\. Clone the Repository
 
@@ -89,104 +67,93 @@ cd secure-todo-app
 ### 2\. Database Setup
 
 1. Make sure your PostgreSQL server is running.
-    
 2. Connect to PostgreSQL and create the database for this project.
-    
-    SQL
-    
-    ```bash
-    -- Using the psql command-line tool
-    CREATE DATABASE todolist;
-    ```
-    
-    The `users` and `todos` tables will be created automatically by the backend server on its first run.
-    
+
+   SQL
+
+   ```bash
+   -- Using the psql command-line tool
+   CREATE DATABASE todolist;
+   ```
+
+   The `users` and `todos` tables will be created automatically by the backend server on its first run.
 
 ### 3\. Backend Setup
 
 1. Navigate to the `backend` directory.
-    
-    Bash
-    
-    ```bash
-    cd backend
-    ```
-    
+
+   Bash
+
+   ```bash
+   cd backend
+   ```
+
 2. Create and activate a Python virtual environment.
-    
-    * **On macOS/Linux:**
-        
-        Bash
-        
-        ```bash
-        python3 -m venv venv
-        source venv/bin/activate
-        ```
-        
-    * **On Windows:**
-        
-        Bash
-        
-        ```bash
-        python -m venv venv
-        .\venv\Scripts\activate
-        ```
-        
+
+   - **On macOS/Linux:**
+     Bash
+     ```bash
+     python3 -m venv venv
+     source venv/bin/activate
+     ```
+   - **On Windows:**
+     Bash
+     ```bash
+     python -m venv venv
+     .\venv\Scripts\activate
+     ```
+
 3. Install all the required Python packages.
-    
-    Bash
-    
-    ```bash
-    pip install Flask Flask-SQLAlchemy psycopg2-binary Flask-Bcrypt PyJWT Flask-Cors
-    ```
-    
+
+   Bash
+
+   ```bash
+   pip install Flask Flask-SQLAlchemy psycopg2-binary Flask-Bcrypt PyJWT Flask-Cors
+   ```
+
 4. Configure Environment Variables
-    
-    You must provide the database credentials and a secret key to the application.
-    
-    * In the `backend` directory, find the `app.py` file.
-        
-    * **Locate the configuration section** and replace the placeholder values with your actual PostgreSQL username and password.
-        
-    
-    Python
-    
-    ```bash
-    # File: backend/app.py
-    
-    # ...
-    # --- Configuration ---
-    # IMPORTANT: Change this secret key!
-    app.config['SECRET_KEY'] = 'a-very-secret-key-that-you-should-change'
-    
-    # IMPORTANT: Update this with your PostgreSQL credentials!
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://your_username:your_password@localhost/todolist'
-    # ...
-    ```
-    
-    For example, if your username is postgres and your password is admin123, the line should be:
-    
-    app.config\['SQLALCHEMY\_DATABASE\_URI'\] = 'postgresql://postgres:admin123@localhost/todolist'
-    
+
+   You must provide the database credentials and a secret key to the application.
+
+   - In the `backend` directory, find the `app.py` file.
+   - **Locate the configuration section** and replace the placeholder values with your actual PostgreSQL username and password.
+
+   Python
+
+   ```bash
+   # File: backend/app.py
+
+   # ...
+   # --- Configuration ---
+   # IMPORTANT: Change this secret key!
+   app.config['SECRET_KEY'] = 'a-very-secret-key-that-you-should-change'
+
+   # IMPORTANT: Update this with your PostgreSQL credentials!
+   app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://your_username:your_password@localhost/todolist'
+   # ...
+   ```
+
+   For example, if your username is postgres and your password is admin123, the line should be:
+
+   app.config\['SQLALCHEMY_DATABASE_URI'\] = 'postgresql://postgres:admin123@localhost/todolist'
 
 ### 4\. Frontend Setup
 
 1. Navigate to the `frontend` directory from the project root.
-    
-    Bash
-    
-    ```bash
-    cd ../frontend
-    ```
-    
+
+   Bash
+
+   ```bash
+   cd ../frontend
+   ```
+
 2. Install all the required npm packages. This might take a few minutes.
-    
-    Bash
-    
-    ```bash
-    npm install
-    ```
-    
+
+   Bash
+
+   ```bash
+   npm install
+   ```
 
 ---
 
@@ -237,6 +204,8 @@ The backend server provides the following RESTful API endpoints. All `/api/todos
 
 ```plaintext
 secure-todo-app/
+├── assets/
+│   └── images/                 
 ├── backend/
 │   ├── venv/
 │   └── app.py              # Main Flask application file
