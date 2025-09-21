@@ -6,12 +6,12 @@ This is a full-stack, three-tier web application. It is a secure to-do list wher
 
 ## Features
 
+- **User Authentication:** Secure registration and login using JWT.
+- **Private To-Do Lists:** Each user manages their own tasks.
+- **Full CRUD Functionality:** Create, read, update, and delete tasks.
+- **RESTful API:** Clean backend API for all app logic.
+- **Responsive UI:** Works well on desktop and mobile.
 
----
-![Login Screen](/assets/images/login.png)
-
----
-![Home Screen](/assets/images/home.png)
 
 ## Tech Stack & Architecture
 
@@ -220,3 +220,12 @@ secure-todo-app/
 │   └── package.json
 └── README.md
 ```
+
+
+---
+![Login Screen](/assets/images/login.png)
+
+---
+![Home Screen](/assets/images/home.png)
+
+---
